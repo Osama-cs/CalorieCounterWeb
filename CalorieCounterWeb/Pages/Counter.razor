@@ -8,7 +8,10 @@
 
 <button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
 
+
 @code {
+	private UserInfo userInfo = new();
+
     private int currentCount = 0;
 
     private void IncrementCount()

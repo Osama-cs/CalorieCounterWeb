@@ -16,6 +16,25 @@ a, .btn-link {
     text-align: center;
 }
 
+.outlineBox {
+    width: 400px;
+    padding: 10px;
+    border: 5px solid gray;
+    margin: 0;
+}
+
+
+/*Code from here: https://www.geeksforgeeks.org/how-to-make-elements-float-to-center/ */
+/*.float-center {
+    width: 200px;
+    height: 200px;
+    position: fixed;
+    top: 50%;
+    left: 69%;
+    margin-top: -100px;
+    margin-left: -100px;
+}*/
+
 .btn-primary {
     color: #fff;
     background-color: #1b6ec2;

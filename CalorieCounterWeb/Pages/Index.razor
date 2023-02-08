@@ -1,9 +1,40 @@
 ﻿@page "/"
-
+@*@inject UserInfo UserInfo
+*@
 <PageTitle>Index</PageTitle>
 
 <h1 class="centerAlign">Hello, world!</h1>
 
-<img src="/small_strong.png" alt="funny cat iamge :3" />
+<div class="centerAlign">
+	<img src="/small_strong.png" alt="funny cat iamge :3" />
+		<div class="outlineBox" style="float:right">
+			<p>Let's be like this cat and start counting thoes calories!</p>
+			<EditForm Model="userInfo">
+				<DataAnnotationsValidator />
+				<ValidationSummary />
+				<Label>
+					Email:
+				<InputText id="email" @bind-Value="userInfo.Email" />
+				</Label>
+				<Label>
+					Password:
+				<InputText id="password" @bind-Value="userInfo.Password" />
+				</Label>
 
+				<button type="submit">Login</button>
 
+			</EditForm>
+		</div>
+</div>
+
+@code{
+
+	private UserInfo userInfo = new();
+
+	@*private void HandleValidSubmit()
+	{
+		Logger.LogInformation("HandleValidSubmit called");
+
+		// Process the valid form
+	}*@
+}
