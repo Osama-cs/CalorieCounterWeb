@@ -1,6 +1,9 @@
 ﻿@page "/"
 @*@inject UserInfo UserInfo
 *@
+
+@*@inject NavigationManager _navigationManager@**@
+
 <PageTitle>Index</PageTitle>
 
 <h1 class="centerAlign">Hello, world!</h1>
@@ -21,7 +24,7 @@
 				<InputText id="password" @bind-Value="userInfo.Password" />
 				</Label>
 
-				<button type="submit">Login</button>
+			<a href="calender" class="btn btn-primary"> Login </a>
 
 			</EditForm>
 		</div>
@@ -30,6 +33,11 @@
 @code{
 
 	private UserInfo userInfo = new();
+
+	@*void Navigate()
+	{
+		UriHelper.NavigateTo("counter");
+	}
 
 	@*private void HandleValidSubmit()
 	{
