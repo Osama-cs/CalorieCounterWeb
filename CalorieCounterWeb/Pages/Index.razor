@@ -6,11 +6,13 @@
 
 <PageTitle>Index</PageTitle>
 
-<h1 class="centerAlign">Hello, world!</h1>
+<h1 class="centerAlign">Smolder Calories</h1>
 
-<div class="centerAlign">
-	<img src="/small_strong.png" alt="funny cat iamge :3" />
-		<div class="outlineBox" style="float:right">
+<div class="wrapper">
+	<div class="catImageDiv">
+		<img src="/small_strong.png" alt="funny cat iamge :3" />
+	</div>
+		<div class="outlineBox" >
 			<p>Let's be like this cat and start counting thoes calories!</p>
 			<EditForm Model="userInfo">
 				<DataAnnotationsValidator />
@@ -23,9 +25,9 @@
 					Password:
 				<InputText id="password" @bind-Value="userInfo.Password" />
 				</Label>
-
+				<br />
 			<a href="calender" class="btn btn-primary"> Login </a>
-			<a href="register" class="btn btn-primary"> Login </a>
+			<a href="register" class="btn btn-primary"> Register </a>
 
 			</EditForm>
 		</div>

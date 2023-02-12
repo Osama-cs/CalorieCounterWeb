@@ -20,7 +20,20 @@ a, .btn-link {
     width: 400px;
     padding: 10px;
     border: 5px solid gray;
-    margin: 0;
+    margin: auto;
+    float: left;
+}
+
+.wrapper {
+    margin: auto;
+    width: 647px;
+    overflow: auto;
+}
+
+.catImageDiv {
+    margin-left:auto;
+    margin-right:auto;
+    float: left;
 }
 
 
