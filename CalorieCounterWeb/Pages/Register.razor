@@ -1,10 +1,63 @@
 ﻿@page "/register"
 
+@inject NavigationManager _navigationManager
+
 <PageTitle>Register</PageTitle>
 
 
-<h3>Register</h3>
+<h1 class="centerAlign">Register Page</h1>
+
+
+<div class="centerAlign">
+	<EditForm Model="userInfo" OnValidSubmit="HandleValidSubmit">
+		<DataAnnotationsValidator />
+		<ValidationSummary />
+		<div class="col">
+		<Label>
+			Email:
+		<InputText id="email" @bind-Value="userInfo.Email" class="form-control"/>
+		</Label>
+		</div>
+		<div class="col">
+		<Label>
+			Password:
+		<InputText id="password" @bind-Value="userInfo.Password" class="form-control"/>
+			<ValidationMessage For="@(() => userInfo.Password)" />
+		</Label>
+		</div>
+		<div class="col">
+		</div>
+		<div class="col">
+		<Label>
+			Confirm Password:
+		<InputText id="confirmPassword" @bind-Value="userInfo.ConfirmPassword" class="form-control" />
+			<ValidationMessage For="@(() => userInfo.ConfirmPassword)" />
+		</Label>
+		</div>
+		<div class="col">
+		<Label>
+			Name:
+		<InputText id="name" @bind-Value="userInfo.Name" class="form-control" />
+		</Label>
+		</div>
+		<div class="col">
+		<Label>
+			Age:
+		<InputText id="age" @bind-Value="userInfo.Age" class="form-control"/>
+		</Label>
+		</div>
+		<br />
+		<button class="btn btn-primary" type="submit" @onclick="@(()=> _navigationManager.NavigateTo("/calender"))">Submit</button>
+	</EditForm>
+</div>
 
 @code {
+	private UserInfo userInfo = new();
+
+	protected void HandleValidSubmit()
+	{
+		
+	}
+
 
 }

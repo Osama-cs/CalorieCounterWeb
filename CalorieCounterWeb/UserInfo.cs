@@ -20,8 +20,11 @@ namespace CalorieCounterWeb
         [Required, StringLength(100, ErrorMessage = "Password is too long, enter a new password"), PasswordPropertyText]
         public string? Password { get; set; }
 
-        [MaxLength(10)]
-        public int Age { get; set; }
+        [Compare("Password", ErrorMessage = "Password must match")]
+		public string? ConfirmPassword { get; set; }
+
+		[MaxLength(10)]
+        public string? Age { get; set; }
 
     }
 }
