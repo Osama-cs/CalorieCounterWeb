@@ -17,6 +17,7 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Components" Version="7.0.2" />
     <PackageReference Include="Microsoft.AspNetCore.Components.Forms" Version="7.0.2" />
+    <PackageReference Include="MudBlazor" Version="6.1.9" />
   </ItemGroup>
 
 </Project>
