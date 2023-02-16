@@ -1,10 +1,114 @@
 ﻿@page "/caloriecount"
+@using MudBlazor
+@using System.ComponentModel.DataAnnotations
+
 
 <PageTitle>Caloire Count</PageTitle>
 
 
 <h3>Caloire Count</h3>
 
+<div class="d-flex">
+	<MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="@ToggleOpen">
+		@(_isOpen ? "Close" : "Open")
+	</MudButton>
+	<MudPopover Open="@_isOpen" AnchorOrigin="Origin.BottomCenter" TransformOrigin="Origin.TopCenter">
+		<div class="d-flex flex-column pa-1">
+			<EditForm Model="@model" OnValidSubmit="OnValidSubmit">
+				<DataAnnotationsValidator />
+				<MudGrid>
+					<MudItem xs="12" sm="12">
+						<MudCard>
+							<MudCardContent>
+								<MudTextField Label="First name" HelperText="Max. 8 characters"
+											  @bind-Value="model.Username" For="@(() => model.Username)" id="Username" />
+								<MudTextField Label="Email" Class="mt-3"
+											  @bind-Value="model.Email" For="@(() => model.Email)" />
+								<MudTextField Label="Password" HelperText="Choose a strong password" Class="mt-3"
+											  @bind-Value="model.Password" For="@(() => model.Password)" InputType="InputType.Password" />
+								<MudTextField Label="Password" HelperText="Repeat the password" Class="mt-3"
+											  @bind-Value="model.Password2" For="@(() => model.Password2)" InputType="InputType.Password" />
+							</MudCardContent>
+							<MudCardActions>
+								<MudButton ButtonType="ButtonType.Submit" Variant="Variant.Filled" Color="Color.Primary" Class="ml-auto">Register</MudButton>
+							</MudCardActions>
+						</MudCard>
+					</MudItem>
+					<MudItem>
+						<MudText Typo="Typo.body2" Align="Align.Center">
+							Fill out the form correctly to see the success message.
+						</MudText>
+					</MudItem>
+				</MudGrid>
+			</EditForm>
+		</div>
+	</MudPopover>
+	<ul>
+		<MudPaper>
+			@if (success)
+			{
+				<li> <MudText>@Text</MudText> </li>
+			}
+		</MudPaper>
+	</ul>
+</div>
+
 @code {
+
+	RegisterAccountForm model = new RegisterAccountForm();
+	bool success;
+
+	public string? Text { get; set; }
+
+	//private IList <Person> people = new List<Person>();
+
+	//private string newPerson;
+
+	public class RegisterAccountForm
+	{
+		[Required]
+		[StringLength(8, ErrorMessage = "Name length can't be more than 8.")]
+		public string? Username { get; set; }
+
+		[Required]
+		[EmailAddress]
+		public string? Email { get; set; }
+
+		[Required]
+		[StringLength(30, ErrorMessage = "Password must be at least 8 characters long.", MinimumLength = 8)]
+		public string? Password { get; set; }
+
+		[Required]
+		[Compare(nameof(Password))]
+		public string? Password2 { get; set; }
+
+	}
+
+
+
+	private void OnValidSubmit(EditContext context)
+	{
+		success = true;
+		StateHasChanged();
+		Text = $"The name is {model.Username}";
+		//peoples.Add(new Person)
+	}
+
+	public bool _isOpen;
+
+	public void ToggleOpen()
+	{
+		if (_isOpen)
+			_isOpen = false;
+		else
+			_isOpen = true;
+	}
+
+	public class Person
+	{
+		public string? DataName { get; set; }
+		public string? DataPass { get; set; }
+		public string? DataEmail { get; set; }
+	}
 
 }
